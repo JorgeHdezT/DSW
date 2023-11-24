@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\HernandezJorge_API_Ej1.props" />
+</Project>
