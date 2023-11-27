@@ -41,7 +41,7 @@ namespace APIMusica_HernandezJorge.Controllers
                            album.AlbumId,
                            album.Title
                         }).ToList()
-                    }).Take(10).ToListAsync();
+                    }).OrderBy(a=> a.Name).Take(10).ToListAsync();
 
             return Ok(diezArtistas);
             //return await _context.Artists.ToListAsync();
@@ -99,13 +99,19 @@ namespace APIMusica_HernandezJorge.Controllers
         // POST: api/Artists
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Artist>> PostArtist(Artist artist)
+        public async Task<ActionResult<Artist>> PostArtist([FromBody] Artist artist)
         {
-          if (_context.Artists == null)
-          {
-              return Problem("Entity set 'ChinookContext.Artists'  is null.");
-          }
+            if (_context.Artists == null)
+            {
+                return Problem("Entity set 'ChinookContext.Artists' is null.");
+            }
+
+            // Obtener el máximo ID actual y asignar la nueva ID
+            int newId = _context.Artists.Max(a => a.ArtistId) + 1;
+            artist.ArtistId = newId;
+
             _context.Artists.Add(artist);
+
             try
             {
                 await _context.SaveChangesAsync();
@@ -125,6 +131,7 @@ namespace APIMusica_HernandezJorge.Controllers
             return CreatedAtAction("GetArtist", new { id = artist.ArtistId }, artist);
         }
 
+
         // DELETE: api/Artists/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteArtist(int id)
@@ -133,13 +140,24 @@ namespace APIMusica_HernandezJorge.Controllers
             {
                 return NotFound();
             }
+
             var artist = await _context.Artists.FindAsync(id);
             if (artist == null)
             {
                 return NotFound();
             }
 
+            // 1. Eliminar canciones del artista
+            var songsToDelete = _context.Tracks.Where(t => t.Album.ArtistId == id);
+            _context.Tracks.RemoveRange(songsToDelete);
+
+            // 2. Eliminar álbumes del artista
+            var albumsToDelete = _context.Albums.Where(a => a.ArtistId == id);
+            _context.Albums.RemoveRange(albumsToDelete);
+
+            // 3. Eliminar el artista
             _context.Artists.Remove(artist);
+
             await _context.SaveChangesAsync();
 
             return NoContent();

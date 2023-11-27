@@ -55,7 +55,7 @@ namespace APIMusica_HernandezJorge.Controllers
             }).ToList()
 
                 
-        }).Take(10).ToListAsync();
+        }).OrderByDescending(a => a.Title).Take(10).ToListAsync();
 
             return Ok(diezAlbums);
         }
@@ -146,17 +146,25 @@ namespace APIMusica_HernandezJorge.Controllers
             {
                 return NotFound();
             }
+
             var album = await _context.Albums.FindAsync(id);
             if (album == null)
             {
                 return NotFound();
             }
 
+            // 1. Eliminar canciones del álbum
+            var songsToDelete = _context.Tracks.Where(t => t.AlbumId == id);
+            _context.Tracks.RemoveRange(songsToDelete);
+
+            // 2. Eliminar el álbum
             _context.Albums.Remove(album);
+
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
+
 
         private bool AlbumExists(int id)
         {
