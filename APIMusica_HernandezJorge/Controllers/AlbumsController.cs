@@ -81,14 +81,26 @@ namespace APIMusica_HernandezJorge.Controllers
         // PUT: api/Albums/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlbum(int id, Album album)
+        public async Task<IActionResult> PutAlbum(int id, AlbumPostPut albumPostPut)
         {
-            if (id != album.AlbumId)
+            if (id != albumPostPut.AlbumPostPutId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(album).State = EntityState.Modified;
+            var existingAlbum = await _context.Albums.FindAsync(id);
+
+            if (existingAlbum == null)
+            {
+                return NotFound();
+            }
+
+            // Actualizar solo las propiedades que se han proporcionado en albumPostPut
+            existingAlbum.Title = albumPostPut.Title;
+            existingAlbum.ArtistId = albumPostPut.ArtistId;
+            // Asegúrate de actualizar otras propiedades según sea necesario
+
+            _context.Entry(existingAlbum).State = EntityState.Modified;
 
             try
             {
@@ -109,23 +121,45 @@ namespace APIMusica_HernandezJorge.Controllers
             return NoContent();
         }
 
+
         // POST: api/Albums
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Album>> PostAlbum(Album album)
+        public async Task<ActionResult<Album>> PostAlbum(AlbumPostPut albumPostPut)
         {
-          if (_context.Albums == null)
-          {
-              return Problem("Entity set 'ChinookContext.Albums'  is null.");
-          }
-            _context.Albums.Add(album);
+            if (_context.Albums == null)
+            {
+                return Problem("Entity set 'ChinookContext.Albums' is null.");
+            }
+
             try
             {
+                // Mapear las propiedades del DTO a un objeto Album
+                var album = new Album
+                {
+                    Title = albumPostPut.Title,
+                    ArtistId = albumPostPut.ArtistId
+                    // Asegúrate de asignar otras propiedades según sea necesario
+                };
+
+                // Obtener el máximo ID actual y asignar la nueva ID
+                int newId = _context.Albums.Max(a => a.AlbumId) + 1;
+                album.AlbumId = newId;
+
+                _context.Albums.Add(album);
                 await _context.SaveChangesAsync();
+
+                // Cargar el álbum completo con todas sus relaciones
+                var completeAlbum = await _context.Albums
+                    .Include(a => a.Artist)
+                    // Incluye otras relaciones según sea necesario
+                    .FirstOrDefaultAsync(a => a.AlbumId == album.AlbumId);
+
+                return CreatedAtAction("GetAlbum", new { id = completeAlbum.AlbumId }, completeAlbum);
             }
             catch (DbUpdateException)
             {
-                if (AlbumExists(album.AlbumId))
+                if (AlbumExists(albumPostPut.ArtistId))
                 {
                     return Conflict();
                 }
@@ -134,8 +168,6 @@ namespace APIMusica_HernandezJorge.Controllers
                     throw;
                 }
             }
-
-            return CreatedAtAction("GetAlbum", new { id = album.AlbumId }, album);
         }
 
         // DELETE: api/Albums/5
@@ -147,15 +179,18 @@ namespace APIMusica_HernandezJorge.Controllers
                 return NotFound();
             }
 
-            var album = await _context.Albums.FindAsync(id);
+            var album = await _context.Albums
+                .Include(a => a.Tracks)
+                .FirstOrDefaultAsync(a => a.AlbumId == id);
+
             if (album == null)
             {
                 return NotFound();
             }
 
-            // 1. Eliminar canciones del álbum
-            var songsToDelete = _context.Tracks.Where(t => t.AlbumId == id);
-            _context.Tracks.RemoveRange(songsToDelete);
+            //// 1. Eliminar canciones del álbum
+            //var songsToDelete = _context.Tracks.Where(t => t.AlbumId == id);
+            //_context.Tracks.RemoveRange(songsToDelete);
 
             // 2. Eliminar el álbum
             _context.Albums.Remove(album);

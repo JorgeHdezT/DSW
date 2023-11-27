@@ -68,14 +68,25 @@ namespace APIMusica_HernandezJorge.Controllers
         // PUT: api/Artists/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArtist(int id, Artist artist)
+        public async Task<IActionResult> PutArtist(int id, ArtistPostPut artistPostPut)
         {
-            if (id != artist.ArtistId)
+            if (id != artistPostPut.ArtistPostPutId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(artist).State = EntityState.Modified;
+            var existingArtist = await _context.Artists.FindAsync(id);
+
+            if (existingArtist == null)
+            {
+                return NotFound();
+            }
+
+            // Actualizar solo las propiedades que se han proporcionado en artistPostPut
+            existingArtist.Name = artistPostPut.Nombre;
+            // Asegúrate de actualizar otras propiedades según sea necesario
+
+            _context.Entry(existingArtist).State = EntityState.Modified;
 
             try
             {
@@ -96,40 +107,35 @@ namespace APIMusica_HernandezJorge.Controllers
             return NoContent();
         }
 
+
+
         // POST: api/Artists
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Artist>> PostArtist([FromBody] Artist artist)
+        public async Task<ActionResult<Artist>> PostArtist(ArtistPostPut artistPostPut)
         {
             if (_context.Artists == null)
             {
                 return Problem("Entity set 'ChinookContext.Artists' is null.");
             }
 
-            // Obtener el máximo ID actual y asignar la nueva ID
-            int newId = _context.Artists.Max(a => a.ArtistId) + 1;
-            artist.ArtistId = newId;
+            // Mapear las propiedades del DTO a un objeto Artist
+            var artist = new Artist
+            {
+                ArtistId = _context.Artists.Max(a => a.ArtistId) + 1,
+                Name = artistPostPut.Nombre
+                // Asegúrate de asignar otras propiedades según sea necesario
+            };
 
             _context.Artists.Add(artist);
+            await _context.SaveChangesAsync();
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ArtistExists(artist.ArtistId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            
 
             return CreatedAtAction("GetArtist", new { id = artist.ArtistId }, artist);
+            
         }
+
 
 
         // DELETE: api/Artists/5
