@@ -29,7 +29,22 @@ namespace APIMusica_HernandezJorge.Controllers
           {
               return NotFound();
           }
-            return await _context.Artists.ToListAsync();
+
+            var diezArtistas = await _context.Artists
+                .Include(al => al.Albums)
+                .Select(a => new
+                    {
+                        a.ArtistId,
+                        a.Name,
+                        Album = a.Albums.Select(album => new
+                        {
+                           album.AlbumId,
+                           album.Title
+                        }).ToList()
+                    }).Take(10).ToListAsync();
+
+            return Ok(diezArtistas);
+            //return await _context.Artists.ToListAsync();
         }
 
         // GET: api/Artists/5
