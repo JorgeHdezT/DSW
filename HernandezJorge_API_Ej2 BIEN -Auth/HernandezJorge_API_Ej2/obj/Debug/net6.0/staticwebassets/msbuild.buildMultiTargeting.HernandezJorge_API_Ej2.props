@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HernandezJorge_API_Ej2.props" />
+</Project>
