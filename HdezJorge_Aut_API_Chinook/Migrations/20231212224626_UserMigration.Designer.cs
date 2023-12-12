@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIMusica_HernandezJorge.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20231212220435_UserMigration")]
+    [Migration("20231212224626_UserMigration")]
     partial class UserMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,15 +74,15 @@ namespace APIMusica_HernandezJorge.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0cd4f05e-b734-4b12-9be4-0e045458bb31",
-                            ConcurrencyStamp = "fd9e9f4a-b965-444f-a730-67c98c795416",
+                            Id = "363437cc-199c-4938-9494-19f02b81e669",
+                            ConcurrencyStamp = "38e62d4f-9c89-4f2b-a117-de8d2fe3570f",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "3cd873b0-a45e-4d3f-953a-938e49bf5074",
-                            ConcurrencyStamp = "3e71c874-6099-4256-a2a6-e3c1a062f62f",
+                            Id = "c2b3076b-af2d-4108-a98c-480cdedc8aa5",
+                            ConcurrencyStamp = "d6c61cab-954b-4d68-9f4d-18932a0520c9",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -180,40 +180,40 @@ namespace APIMusica_HernandezJorge.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2b6eed8b-160e-49d1-bd40-d1024059faea",
+                            Id = "aba6ac9d-aced-486e-8618-2e41293fb5de",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8d47738a-2cd4-4afa-8420-33231ddd4e89",
+                            ConcurrencyStamp = "c51787d1-0aa5-48a7-a826-effca4548c54",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEH8oR1NaqGWfhRDxlGZjCWvtBoMsfILVc2FXD5E+TfgQcOkMv7shshWM/CBbIFvZxA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAd9r3TnN6sKerdPwPsP1UOJ40BOrUHYDU1M+2EVUNMHwy50VzBUlacqhpmdvj0t/w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d1f99099-3711-418b-b3bc-e0fe590d143c",
+                            SecurityStamp = "0412767d-1b93-429b-89cb-037f24b252c4",
                             TwoFactorEnabled = false,
                             UserName = "usuario 1"
                         },
                         new
                         {
-                            Id = "1b5e7c93-0685-4ae1-a5f5-94aa2cd8bd94",
+                            Id = "daf1732c-0c22-4718-a615-e599e69c98c2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "14eaafd1-7ffb-411e-8ce1-5f5e7faae94b",
+                            ConcurrencyStamp = "687f0dd1-80be-4ec1-afb2-60b18b6c8eab",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAECk+eMJVYGVby66P9956HAbKhOihD3fU3kzcfmlSHpA2X5vKJVe997ktexVZQdUg4Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGCPZjB7S1bshjyFqREFo5BsqzqDtuDkVYIYssZxoSZPn6k/x44gJOytWYSAfhgvYw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "680b1dcf-4347-4770-b5fb-5b3efac82d36",
+                            SecurityStamp = "4d71c168-1c2e-4075-a27c-5401f0d7207a",
                             TwoFactorEnabled = false,
                             UserName = "usuario 2"
                         },
                         new
                         {
-                            Id = "a67cdedf-6e9f-4b88-aad0-1138fdaaaded",
+                            Id = "88e4217c-e4ab-4d6d-9192-462a55b7da7b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "411f61cb-b99a-4bbe-9d14-dc908986214e",
+                            ConcurrencyStamp = "ae55691e-2965-4929-aceb-9c86284458a8",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEM/WzXfsbHU3kQlFnLw4khS4d+rEbv8E2BqAne/9BWwLea0j0L0PkIFdh6PyuynhDQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH6pS5ocR0rq6g/Gf+Tr24/t2US2T2F55UDb6WPy/Cw2wF9dxN3TUcdATV5amaP7qQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "15aed6ff-e637-463b-b97a-5276726c8a6d",
+                            SecurityStamp = "729fb5b8-47da-4b2c-ad31-a0eeb53730de",
                             TwoFactorEnabled = false,
                             UserName = "usuario 3"
                         });
@@ -283,18 +283,18 @@ namespace APIMusica_HernandezJorge.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2b6eed8b-160e-49d1-bd40-d1024059faea",
-                            RoleId = "0cd4f05e-b734-4b12-9be4-0e045458bb31"
+                            UserId = "aba6ac9d-aced-486e-8618-2e41293fb5de",
+                            RoleId = "363437cc-199c-4938-9494-19f02b81e669"
                         },
                         new
                         {
-                            UserId = "1b5e7c93-0685-4ae1-a5f5-94aa2cd8bd94",
-                            RoleId = "0cd4f05e-b734-4b12-9be4-0e045458bb31"
+                            UserId = "daf1732c-0c22-4718-a615-e599e69c98c2",
+                            RoleId = "363437cc-199c-4938-9494-19f02b81e669"
                         },
                         new
                         {
-                            UserId = "a67cdedf-6e9f-4b88-aad0-1138fdaaaded",
-                            RoleId = "0cd4f05e-b734-4b12-9be4-0e045458bb31"
+                            UserId = "88e4217c-e4ab-4d6d-9192-462a55b7da7b",
+                            RoleId = "363437cc-199c-4938-9494-19f02b81e669"
                         });
                 });
 

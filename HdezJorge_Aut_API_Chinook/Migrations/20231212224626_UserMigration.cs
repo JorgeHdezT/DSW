@@ -173,8 +173,8 @@ namespace APIMusica_HernandezJorge.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0cd4f05e-b734-4b12-9be4-0e045458bb31", "fd9e9f4a-b965-444f-a730-67c98c795416", "User", "USER" },
-                    { "3cd873b0-a45e-4d3f-953a-938e49bf5074", "3e71c874-6099-4256-a2a6-e3c1a062f62f", "Admin", "ADMIN" }
+                    { "363437cc-199c-4938-9494-19f02b81e669", "38e62d4f-9c89-4f2b-a117-de8d2fe3570f", "User", "USER" },
+                    { "c2b3076b-af2d-4108-a98c-480cdedc8aa5", "d6c61cab-954b-4d68-9f4d-18932a0520c9", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -182,25 +182,25 @@ namespace APIMusica_HernandezJorge.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1b5e7c93-0685-4ae1-a5f5-94aa2cd8bd94", 0, "14eaafd1-7ffb-411e-8ce1-5f5e7faae94b", null, false, false, null, null, null, "AQAAAAEAACcQAAAAECk+eMJVYGVby66P9956HAbKhOihD3fU3kzcfmlSHpA2X5vKJVe997ktexVZQdUg4Q==", null, false, "680b1dcf-4347-4770-b5fb-5b3efac82d36", false, "usuario 2" },
-                    { "2b6eed8b-160e-49d1-bd40-d1024059faea", 0, "8d47738a-2cd4-4afa-8420-33231ddd4e89", null, false, false, null, null, null, "AQAAAAEAACcQAAAAEH8oR1NaqGWfhRDxlGZjCWvtBoMsfILVc2FXD5E+TfgQcOkMv7shshWM/CBbIFvZxA==", null, false, "d1f99099-3711-418b-b3bc-e0fe590d143c", false, "usuario 1" },
-                    { "a67cdedf-6e9f-4b88-aad0-1138fdaaaded", 0, "411f61cb-b99a-4bbe-9d14-dc908986214e", null, false, false, null, null, null, "AQAAAAEAACcQAAAAEM/WzXfsbHU3kQlFnLw4khS4d+rEbv8E2BqAne/9BWwLea0j0L0PkIFdh6PyuynhDQ==", null, false, "15aed6ff-e637-463b-b97a-5276726c8a6d", false, "usuario 3" }
+                    { "88e4217c-e4ab-4d6d-9192-462a55b7da7b", 0, "ae55691e-2965-4929-aceb-9c86284458a8", null, false, false, null, null, null, "AQAAAAEAACcQAAAAEH6pS5ocR0rq6g/Gf+Tr24/t2US2T2F55UDb6WPy/Cw2wF9dxN3TUcdATV5amaP7qQ==", null, false, "729fb5b8-47da-4b2c-ad31-a0eeb53730de", false, "usuario 3" },
+                    { "aba6ac9d-aced-486e-8618-2e41293fb5de", 0, "c51787d1-0aa5-48a7-a826-effca4548c54", null, false, false, null, null, null, "AQAAAAEAACcQAAAAEAd9r3TnN6sKerdPwPsP1UOJ40BOrUHYDU1M+2EVUNMHwy50VzBUlacqhpmdvj0t/w==", null, false, "0412767d-1b93-429b-89cb-037f24b252c4", false, "usuario 1" },
+                    { "daf1732c-0c22-4718-a615-e599e69c98c2", 0, "687f0dd1-80be-4ec1-afb2-60b18b6c8eab", null, false, false, null, null, null, "AQAAAAEAACcQAAAAEGCPZjB7S1bshjyFqREFo5BsqzqDtuDkVYIYssZxoSZPn6k/x44gJOytWYSAfhgvYw==", null, false, "4d71c168-1c2e-4075-a27c-5401f0d7207a", false, "usuario 2" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "0cd4f05e-b734-4b12-9be4-0e045458bb31", "1b5e7c93-0685-4ae1-a5f5-94aa2cd8bd94" });
+                values: new object[] { "363437cc-199c-4938-9494-19f02b81e669", "88e4217c-e4ab-4d6d-9192-462a55b7da7b" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "0cd4f05e-b734-4b12-9be4-0e045458bb31", "2b6eed8b-160e-49d1-bd40-d1024059faea" });
+                values: new object[] { "363437cc-199c-4938-9494-19f02b81e669", "aba6ac9d-aced-486e-8618-2e41293fb5de" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "0cd4f05e-b734-4b12-9be4-0e045458bb31", "a67cdedf-6e9f-4b88-aad0-1138fdaaaded" });
+                values: new object[] { "363437cc-199c-4938-9494-19f02b81e669", "daf1732c-0c22-4718-a615-e599e69c98c2" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

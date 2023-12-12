@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace HernandezJorge_API_Ej2.Controllers
+namespace APIMusica_HdezJorge
 {
     [Route("api/[controller]")]
     [ApiController]
