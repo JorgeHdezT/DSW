@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APIMusica_HdezJorge.Data;
 using APIMusica_HdezJorge.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APIMusica_HdezJorge.Controllers
 {
@@ -23,6 +24,8 @@ namespace APIMusica_HdezJorge.Controllers
 
         // GET: api/Artists
         [HttpGet]
+        [Authorize] //Es necesario estar autorizado para ello.
+
         public async Task<ActionResult<IEnumerable<Artist>>> GetArtists()
         {
           if (_context.Artists == null)

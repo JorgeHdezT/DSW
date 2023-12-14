@@ -24,7 +24,7 @@ namespace APIMusica_HdezJorge.Controllers
 
         // GET: api/Albums
         [HttpGet]
-        [Authorize] //Es necesario estar autorizado para ello.
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
           if (_context.Albums == null)

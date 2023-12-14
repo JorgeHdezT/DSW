@@ -28,15 +28,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                ValidAudience = "GameStoreApp",
+                ValidAudience = "ChinookApp",
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
             };
         });
 
-//necesario ponerlo porque si no, no genera los roles ni los token. 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-        .AddEntityFrameworkStores<UserDbContext>()
-        .AddDefaultTokenProviders();
+//Agregar los roles para los usuarios.
+builder.Services.AddIdentityCore<IdentityUser>(options =>
+ options.SignIn.RequireConfirmedEmail = false)
+ .AddRoles<IdentityRole>()
+ .AddEntityFrameworkStores<UserDbContext>();
+
 
 builder.Services.AddControllers().AddJsonOptions(x =>
         x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
