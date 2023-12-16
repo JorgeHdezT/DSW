@@ -24,7 +24,7 @@ namespace APIMusica_HdezJorge.Controllers
 
         // GET: api/Albums
         [HttpGet]
-        [Authorize]
+        [Authorize] //Cualquier usuario autenticado
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
           if (_context.Albums == null)
@@ -64,6 +64,7 @@ namespace APIMusica_HdezJorge.Controllers
 
         // GET: api/Albums/5
         [HttpGet("{id}")]
+        [Authorize] //Cualquiera autenticado puede ver la lista
         public async Task<ActionResult<Album>> GetAlbum(int id)
         {
           if (_context.Albums == null)
@@ -83,6 +84,8 @@ namespace APIMusica_HdezJorge.Controllers
         // PUT: api/Albums/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize] //Debe estar autenticado...
+        [Authorize(Roles = "Admin")] // Solo los admin pueden modificar un album
         public async Task<IActionResult> PutAlbum(int id, AlbumPostPut albumPostPut)
         {
             if (id != albumPostPut.AlbumPostPutId)
@@ -100,7 +103,7 @@ namespace APIMusica_HdezJorge.Controllers
             // Actualizar solo las propiedades que se han proporcionado en albumPostPut
             existingAlbum.Title = albumPostPut.Title;
             existingAlbum.ArtistId = albumPostPut.ArtistId;
-            // Asegúrate de actualizar otras propiedades según sea necesario
+            // Me aseguro de actualizar otras propiedades según sea necesario
 
             _context.Entry(existingAlbum).State = EntityState.Modified;
 
@@ -127,6 +130,8 @@ namespace APIMusica_HdezJorge.Controllers
         // POST: api/Albums
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize] //Debe estar autenticado...
+        [Authorize(Roles = "Admin")] // Solo los admin pueden crear.
         public async Task<ActionResult<Album>> PostAlbum(AlbumPostPut albumPostPut)
         {
             if (_context.Albums == null)
@@ -141,7 +146,7 @@ namespace APIMusica_HdezJorge.Controllers
                 {
                     Title = albumPostPut.Title,
                     ArtistId = albumPostPut.ArtistId
-                    // Asegúrate de asignar otras propiedades según sea necesario
+                    // Asegurarme de asignar otras propiedades según sea necesario
                 };
 
                 // Obtener el máximo ID actual y asignar la nueva ID
@@ -157,16 +162,19 @@ namespace APIMusica_HdezJorge.Controllers
                     // Incluye otras relaciones según sea necesario
                     .FirstOrDefaultAsync(a => a.AlbumId == album.AlbumId);
 
-                return CreatedAtAction("GetAlbum", new { id = completeAlbum.AlbumId }, completeAlbum);
+                // Devolver un mensaje de éxito junto con el resultado
+                return CreatedAtAction("GetAlbum", new { id = completeAlbum.AlbumId }, new { Success = true, Message = "Álbum creado con éxito", Album = completeAlbum });
             }
             catch (DbUpdateException)
             {
                 if (AlbumExists(albumPostPut.ArtistId))
                 {
-                    return Conflict();
+                    // Devolver un mensaje de conflicto si el álbum ya existe
+                    return Conflict(new { Success = false, Message = "El álbum ya existe" });
                 }
                 else
                 {
+                    // Lanzar la excepción si es un error diferente
                     throw;
                 }
             }
@@ -174,6 +182,8 @@ namespace APIMusica_HdezJorge.Controllers
 
         // DELETE: api/Albums/5
         [HttpDelete("{id}")]
+        [Authorize] //Debe estar autenticado...
+        [Authorize(Roles = "Admin")] // Solo los admin pueden borrar.
         public async Task<IActionResult> DeleteAlbum(int id)
         {
             if (_context.Albums == null)

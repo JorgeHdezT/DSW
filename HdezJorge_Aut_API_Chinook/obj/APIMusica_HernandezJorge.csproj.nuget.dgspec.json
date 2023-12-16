@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hache\\Documents\\GitHub\\DSW\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj": {}
+    "C:\\Users\\Hache\\Desktop\\APIS\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hache\\Documents\\GitHub\\DSW\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj": {
+    "C:\\Users\\Hache\\Desktop\\APIS\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hache\\Documents\\GitHub\\DSW\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj",
+        "projectUniqueName": "C:\\Users\\Hache\\Desktop\\APIS\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj",
         "projectName": "APIMusica_HernandezJorge",
-        "projectPath": "C:\\Users\\Hache\\Documents\\GitHub\\DSW\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj",
+        "projectPath": "C:\\Users\\Hache\\Desktop\\APIS\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj",
         "packagesPath": "C:\\Users\\Hache\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hache\\Documents\\GitHub\\DSW\\HdezJorge_Aut_API_Chinook\\obj\\",
+        "outputPath": "C:\\Users\\Hache\\Desktop\\APIS\\HdezJorge_Aut_API_Chinook\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hache\\AppData\\Roaming\\NuGet\\NuGet.Config",

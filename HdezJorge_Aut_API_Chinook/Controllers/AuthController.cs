@@ -13,6 +13,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
+
+/*
+  {
+    "userName": "admin",
+    "password": "admin"
+  }
+*/
+
 namespace APIMusica_HdezJorge
 {
     [Route("api/[controller]")]
@@ -54,8 +62,9 @@ namespace APIMusica_HdezJorge
             var userRoles = await _userManager.GetRolesAsync(user);
             foreach (var userRole in userRoles)
             {
-                claims.Add(new Claim("Role", userRole));
+                claims.Add(new Claim(ClaimTypes.Role, userRole));
             }
+
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -67,6 +76,34 @@ namespace APIMusica_HdezJorge
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+       
+        // METODO PARA VER QUE ROL TIENES ACTUALMENTE (Idea extra hecha y pensada por mi)
+
+        [HttpGet("get-user-role")]
+        [Authorize] // Asegura que el usuario esté autenticado
+        public IActionResult GetUserRole()
+        {
+            try
+            {
+                // Obtiene el nombre del usuario actual
+                var userName = User.Identity.Name;
+
+                // Obtiene los roles del usuario actual
+                var userRoles = ((ClaimsIdentity)User.Identity).Claims
+                    .Where(c => c.Type == ClaimTypes.Role)
+                    .Select(c => c.Value);
+
+                // Retorna los roles del usuario
+                return Ok(new {Roles = userRoles });
+            }
+            catch (Exception ex)
+            {
+                // Registra la excepción para obtener más detalles
+                Console.WriteLine($"Error al obtener el rol del usuario: {ex}");
+                return StatusCode(500, "Error interno al obtener el rol del usuario");
+            }
         }
     }
 }

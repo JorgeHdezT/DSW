@@ -52,6 +52,7 @@ namespace APIMusica_HdezJorge.Controllers
 
         // GET: api/Artists/5
         [HttpGet("{id}")]
+        [Authorize] //Debe estar autenticado...
         public async Task<ActionResult<Artist>> GetArtist(int id)
         {
           if (_context.Artists == null)
@@ -71,6 +72,8 @@ namespace APIMusica_HdezJorge.Controllers
         // PUT: api/Artists/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize] //Debe estar autenticado...
+        [Authorize(Roles = "Admin, Manager")] // Solo los admin pueden modificar un album
         public async Task<IActionResult> PutArtist(int id, ArtistPostPut artistPostPut)
         {
             if (id != artistPostPut.ArtistPostPutId)
@@ -115,6 +118,9 @@ namespace APIMusica_HdezJorge.Controllers
         // POST: api/Artists
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
+        [Authorize(Roles = "Admin, Manager")] // Solo los admin y manager pueden modificar un album
+
         public async Task<ActionResult<Artist>> PostArtist(ArtistPostPut artistPostPut)
         {
             if (_context.Artists == null)
@@ -143,6 +149,9 @@ namespace APIMusica_HdezJorge.Controllers
 
         // DELETE: api/Artists/5
         [HttpDelete("{id}")]
+        [Authorize]
+        [Authorize(Roles = "Admin, Manager")] // Solo los admin  o manager pueden modificar un album
+
         public async Task<IActionResult> DeleteArtist(int id)
         {
             if (_context.Artists == null)
