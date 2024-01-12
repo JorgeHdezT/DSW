@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Farmacias</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <img th:src="@{/static/logo.png}" alt="Logo de la farmacia">
+    <h1>Farmacias Web</h1>
+</header>
+<main style="margin-bottom: 50vh;">
+    <h1>Añadir una nueva Farmacia</h1>
+
+    <div style="display: flex; flex-direction: column; gap: 5px; justify-content: center; align-items: center;">
+
+        <form action="#" th:action="@{/addPharmacy}" method="post" th:object="${farmacia}" style="display: flex; flex-direction: column; gap: 30px;">
+            <input type="text" placeholder="Nombre" th:field="*{nombre}" required style="transform: scale(150%); border-radius: 10px; background-color: white; border: 2px solid lime; padding: 10px;">
+            <input type="text" placeholder="Teléfono" th:field="*{telefono}" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" title="El formato debe ser xxxxxxxxx" required style="transform: scale(150%); border-radius: 10px; background-color: white; border: 2px solid lime; padding: 10px;">
+            <input type="text" placeholder="Web" th:field="*{web}" required style="transform: scale(150%); border-radius: 10px; background-color: white; border: 2px solid lime; padding: 10px;">
+            <input type="text" placeholder="Horario" th:field="*{lunes}" required style="transform: scale(150%); border-radius: 10px; background-color: white; border: 2px solid lime; padding: 10px;">
+            <input type="text" placeholder="UTM_X" th:field="*{utmX}" required style="transform: scale(150%); border-radius: 10px; background-color: white; border: 2px solid lime; padding: 10px;">
+            <input type="text" placeholder="UTM_Y" th:field="*{utmY}" required style="transform: scale(150%); border-radius: 10px; background-color: white; border: 2px solid lime; padding: 10px;">
+            <button type="submit" style="transform: scale(150%); border-radius: 10px; background-color: lime; border: 2px solid white; padding: 10px; color: black;">Añadir Farmacia</button>
+        </form>
+
+        <h1><span th:text="|${msg}|"></span></h1>
+        <div style="display:flex;gap:10px">
+            <a th:href="@{/index}"><button >Volver al Inicio</button></a>
+            <a th:href="@{/farmacias}"><button >Ver la Lista de Farmacias</button></a>
+        </div>
+    </div>
+</main>
+
+
+<footer>
+    <h2>Jorge Hernández Toledo / Froilán de Rada</h2>
+    <h3>2024 - DSW - CIFP César Manrique</h3>
+</footer>
+</body>
+</html>

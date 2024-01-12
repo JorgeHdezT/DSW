@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Farmacias</title>
+
+    <style>
+        header {
+        background-color: #1abf72;
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        }
+
+        header img {
+        width: 5%;
+        filter: brightness(500%);
+        }
+
+        body {
+        color: white;
+        background-color: rgba(0, 51, 20, 1);
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        font-family: sans-serif;
+        }
+
+        main {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-direction: column;
+        }
+
+        footer {
+        background-color: #1abf72;
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://images.vexels.com/media/users/3/127693/isolated/preview/42307f62c778eb0f1931cb71256c9a1f-icono-de-farmacia-plana.png" alt="">
+        <h1>Farmacias Web</h1>
+    </header>
+
+    <main>
+        <h1>Listado de Farmacias</h1>
+
+        <table style= "border: 2px solid white">
+            <tr>
+                <th>Web</th>
+                <th>Lunes</th>
+                <th>Teléfono</th>
+                <th>Nombre</th>
+                <th>UTM_X</th>
+                <th>UTM_Y</th>
+            </tr>
+            <tr th:each="farmacia : ${farmacias}">
+                <td th:text="${farmacia.WEB}"></td>
+                <td th:text="${farmacia.LUNES}"></td>
+                <td th:text="${farmacia.TELEFONO}"></td>
+                <td th:text="${farmacia.NOMBRE}"></td>
+                <td th:text="${farmacia.UTM_X}"></td>
+                <td th:text="${farmacia.UTM_Y}"></td>
+            </tr>
+        </table>
+        <a href="index.html">
+            <button>Volver</button>
+        </a>
+    </main>
+
+    <footer>
+        <h2>Jorge Hernández Toledo</h2>
+        <h3>2024 - DSW - CIFP César Manrique</h3>
+    </footer>
+</body>
+</html>

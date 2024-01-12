@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+
+    <style>
+        header {
+            background-color: #1abf72;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        header img {
+        width: 5%;
+        filter: brightness(500%);
+        }
+
+        body {
+            color: white;
+            background-color: rgba(0, 51, 20, 1);
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            font-family: sans-serif;
+        }
+
+        main {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        main img {
+            width: 350px;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto;
+        }
+
+        .caja {
+            width: 400px;
+            height: 400px;
+            background-color: rgba(15, 255, 108, 0.44);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .caja img {
+            width: 250px;
+
+        }
+
+        footer {
+            background-color: #1abf72;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+
+        footer h2{
+            margin-left: 10px;
+        }
+        footer h3 {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://images.vexels.com/media/users/3/127693/isolated/preview/42307f62c778eb0f1931cb71256c9a1f-icono-de-farmacia-plana.png" alt="">
+        <h1>Farmacias Web</h1>
+    </header>
+
+
+    <main>
+
+        <h1>¡Bienvenido/a a la web de farmacias!</h1>
+
+       <section>
+           <div id="lista" class="caja">
+               <h2>Lista de Farmacias</h2>
+               <img src="https://th.bing.com/th/id/OIG.pcXKd8QCL9iND1TLri_X?pid=ImgGn" alt="">
+               <a th:href="@{/lista}"> <button>MOSTRAR</button> </a>
+           </div>
+
+           <div id="cercana" class="caja">
+               <h2>Farmacias Cercanas</h2>
+               <img src="https://thumbs.dreamstime.com/b/search-hospital-pharmacy-map-search-hospital-pharmacy-map-vector-illustration-119902453.jpg" alt="">
+
+               <form action="">
+                   <input type="text" id="nombre" placeholder="Nombre de la farmacia">
+                   <button>Buscar farmacia cercana</button>
+               </form>
+           </div>
+       </section>
+    </main>
+
+    <footer>
+        <h2>Jorge Hernández Toledo</h2>
+        <h3>2024 - DSW - CIFP César Manrique</h3>
+    </footer>
+
+
+</body>
+</html>

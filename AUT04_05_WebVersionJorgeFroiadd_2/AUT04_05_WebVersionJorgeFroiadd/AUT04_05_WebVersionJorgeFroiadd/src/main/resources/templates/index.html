@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <img th:src="@{/static/logo.png}" alt="Logo de la farmacia">
+    <h1>Farmacias Web</h1>
+</header>
+<main>
+
+    <h1>¡Bienvenido/a a la web de farmacias!</h1>
+
+    <section>
+        <div id="lista" class="caja">
+            <h2>Lista de Farmacias</h2>
+            <img th:src="@{/static/OIG.webp}" alt="Imagen de lista de farmacias"><br>
+            <a th:href="@{/farmacias}"> <button>MOSTRAR</button> </a>
+        </div>
+
+        <div id="cercana" class="caja">
+            <h2>Farmacias Cercanas</h2>
+            <img th:src="@{/static/cercanas.jpg}" alt="Imagen de farmacias cercanas"><br>
+            <form action="#" th:action="@{/near-pharmacies}" method="get">
+                <input type="text" id="nombreFarmacia" name="nombreFarmacia" placeholder="Nombre de la farmacia">
+                <button type="submit">Buscar farmacia cercana</button>
+            </form>
+            <div th:if="${farmaciasEncontradas!=null && !farmaciasEncontradas}">
+                <p>No se encontraron farmacias cercanas a <span th:text="${nombreFarmacia}"></span>.</p>
+            </div>
+
+            <div th:if="${not #lists.isEmpty(nearPharmacies)}">
+                <!--<ul>
+                    <li th:each="farmacia : ${nearPharmacies}" th:text="${farmacia.nombre}"></li>
+                </ul>-->
+
+                <p> <span th:text="|Hay ${tamano} farmacias cerca de: ${nombreFarmacia}|"></span></p>
+
+
+                <!-- <h2> <span th:text="|${tamaño} farmacias cerca de: ${nombreFarmacia}|"></span></h2>
+                -->
+                 <!--<ul>
+                     <li th:each="farmacia : ${nearPharmacies}" th:text="${farmacia.nombre}"></li>
+                 </ul>-->
+            </div>
+        </div>
+        <div id="crear" class="caja">
+            <h2>Añadir una nueva farmacia</h2>
+            <img th:src="@{/static/farmacia.jpg}" alt="Imagen de lista de farmacias"><br>
+            <a th:href="@{/crearfarmacias}"> <button>Ir la página de creación</button> </a>
+        </div>
+    </section>
+</main>
+<!--
+<h1>Bienvenido, encuentra tu farmacia</h1>
+<img src="/derada_farm/static/farmacia.jpg" alt="Imagen de la farmacia" width="200" height="150"/><br>
+<a th:href="@{/farmacias}">Lista de Farmacias</a>
+ Formulario de búsqueda
+<form action="#" th:action="@{/near-pharmacies}" method="get">
+    <label for="nombreFarmacia">Nombre de la Farmacia:</label>
+    <input type="text" id="nombreFarmacia" name="nombreFarmacia" placeholder="Nombre exacto de la farmacia">
+
+    <button type="submit">Buscar Farmacias Cercanas</button>
+</form>
+
+ found
+<div th:if="${farmaciasEncontradas!=null && !farmaciasEncontradas}">
+    <p>No se encontraron farmacias cercanas a <span th:text="${nombreFarmacia}"></span>.</p>
+</div>
+
+<div th:if="${not #lists.isEmpty(nearPharmacies)}">
+    <h2>Farmacias cerca de: <span th:text="${nombreFarmacia}"></span></h2>
+
+ Contenido para mostrar cuando se encuentren farmacias
+    <ul>
+        <li th:each="farmacia : ${nearPharmacies}" th:text="${farmacia.nombre}"></li>
+    </ul>
+</div>
+-->
+<footer>
+    <h2>Jorge Hernández Toledo / Froilán de Rada</h2>
+    <h3>2024 - DSW - CIFP César Manrique</h3>
+</footer>
+</body>
+</html>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RMTaKvTGGNB2138EmvXtpiA0xHtBrNtQLguzKmO9kmbmPyzyftJvQJXHcgtlsPRD2RIQiGLuA4Lpq6wi59YYVg==",
+  "dgSpecHash": "u89tMBNH3TI/hHaPT/AFtPezC66RbCrtk7NmKl1JOjI/zKzD+2J0X9QeCdVkLSSyeWjbpS4DpvzTem0Dql7gXA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hache\\Desktop\\APIS\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj",
+  "projectFilePath": "C:\\Users\\Hache\\Desktop\\HdezJorge_Aut_API_Chinook\\APIMusica_HernandezJorge.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hache\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Hache\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

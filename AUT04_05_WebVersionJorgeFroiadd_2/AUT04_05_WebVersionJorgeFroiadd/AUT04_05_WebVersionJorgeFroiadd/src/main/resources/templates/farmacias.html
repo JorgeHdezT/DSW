@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Farmacias</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <img th:src="@{/static/logo.png}" alt="Logo de la farmacia">
+    <h1>Farmacias Web</h1>
+</header>
+<main>
+    <h1>Lista de Farmacias</h1>
+    <div style="display:flex;gap:10px">
+        <a th:href="@{/index}"><button >Volver al Inicio</button></a>
+        <a th:href="@{/crearfarmacias}"><button >Crear nueva farmacia</button></a>
+    </div>
+    <table id="tabla">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Horario</th>
+            <th>Web</th>
+            <th>Ubicación</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="farmacia : ${farmacias}">
+            <td th:text="${farmacia.nombre}"></td>
+            <td th:text="${farmacia.telefono}"></td>
+            <td th:text="${farmacia.lunes}"></td>
+            <td th:text="${farmacia.web}"></td>
+            <td>
+                UTM X: <span th:text="${farmacia.utmX}"></span>,
+                UTM Y: <span th:text="${farmacia.utmY}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/index}"><button >Volver al Inicio</button></a>
+</main>
+<footer>
+    <h2>Jorge Hernández Toledo / Froilán de Rada</h2>
+    <h3>2024 - DSW - CIFP César Manrique</h3>
+</footer>
+</body>
+</html>
