@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenidos a mi discografia.</h1>
+    <p> Una experiencia de usuario cómoda y sencilla.</p>
+    <div class="content">
+        <div>
+            <img src="/img/album-img.jpg"/>
+            <a asp-controller="Albums" asp-action="Index">
+                Ir a Albums
+            </a>
+        </div>
+        <div>
+            <img src="/img/artist-img.jpg" />
+            <a asp-controller="Artists" asp-action="Index">
+                Ir a Artistas
+            </a>
+        </div>
+        <div>
+            <img src="/img/login-img.jpg" />
+            <a asp-controller="Home" asp-action="Login">
+                Ir al Log In
+            </a>
+        </div>
+    </div>
+</div>

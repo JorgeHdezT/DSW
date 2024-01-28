@@ -1,0 +1,45 @@
+html {
+  font-size: 14px;
+}
+
+.content{
+  display: flex;
+  justify-content: space-around;
+}
+
+.content > div{
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  height: 100px;
+  overflow: hidden;
+  box-shadow: -1px 1px 6px 0px #00000057;
+}
+
+.content  div img{
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content div a{
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}

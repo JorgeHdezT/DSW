@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de imágenes</title>
+    <link th:href="@{/style/style.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h2>Subir Imagen</h2>
+<form action="#" th:action="@{/imageManager}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*">
+    <button type="submit">Subir</button>
+</form>
+<p th:text="${message}"></p>
+<a th:href="@{/images}">
+    <button type="button">Mostrar Imágenes</button>
+</a>
+</body>
+</html>

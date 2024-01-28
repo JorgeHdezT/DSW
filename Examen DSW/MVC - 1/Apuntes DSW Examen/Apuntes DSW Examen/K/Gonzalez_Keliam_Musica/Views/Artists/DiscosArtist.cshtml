@@ -1,0 +1,23 @@
+﻿@model List<Gonzalez_Keliam_Musica.Models.Album>
+
+@{
+    ViewData["Title"] = "DiscosArtist";
+}
+
+<h1>Albums del Artista.</h1>
+
+<div>
+    <h4>Album</h4>
+    <hr />
+    <ul>
+        @foreach (var album in Model)
+        {
+            <li>
+                @Html.DisplayFor(model => album.Title);
+            </li>
+        }
+    </ul>
+</div>
+<div>
+    <a asp-action="Index">Volver a la lista.</a>
+</div>

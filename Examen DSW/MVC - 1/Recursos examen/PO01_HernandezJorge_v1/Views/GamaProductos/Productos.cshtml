@@ -1,0 +1,32 @@
+﻿@model PO01_HernandezJorge_v1.Models.GamaProducto
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<h1>Productos de la gama @Html.DisplayFor(model => model.DescripcionTexto)</h1>
+
+<div>
+    <h4>GamaProducto</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DescripcionTexto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DescripcionTexto)
+        </dd>
+    </dl>
+</div>
+
+@* Crear un nuevo producto: *@
+
+<button style="border: 3px solid dodgerblue; color: white; font-size: 10px; padding: 2px; border-radius: 10px;">
+    <a class="nav-link text-dark" asp-area="Productos" asp-controller="Productos" asp-action="Create">
+        Crear Nuevo Producto
+    </a>
+</button>
+
+<div>
+    <a asp-action="Index">volver a la lista</a>
+</div>

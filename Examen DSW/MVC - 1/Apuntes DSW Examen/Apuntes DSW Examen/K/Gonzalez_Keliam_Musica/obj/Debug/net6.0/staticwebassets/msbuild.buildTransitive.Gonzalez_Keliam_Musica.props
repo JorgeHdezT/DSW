@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Gonzalez_Keliam_Musica.props" />
+</Project>

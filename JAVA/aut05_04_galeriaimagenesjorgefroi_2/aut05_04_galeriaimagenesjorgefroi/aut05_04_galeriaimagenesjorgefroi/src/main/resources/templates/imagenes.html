@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Uploaded Images</title>
+    <link th:href="@{/style/style.css?ts=__TIMESTAMP__}" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+<h2>Imágenes Cargadas:</h2>
+
+
+<section id="imagesContainer">
+    <div th:each="file : ${files}">
+        <img th:src="@{'/uploadsjorgefroi/images/' + ${file}}"/>
+    </div>
+</section>
+
+</section>
+
+</body>
+</html>

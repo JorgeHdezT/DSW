@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RECUPO01_HernandezJorge.Models.Venta>
+
+@{
+    ViewData["Title"] = "Ventas del producto";
+}
+
+<h1>Ventas del producto de @ViewData["venta"]</h1>
+<p>
+    <a asp-controller="Productoes" asp-action="CrearVentaProducto"
+       asp-route-id="@ViewData["venta"]">Crear nueva venta para este producto.</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Units)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.productoId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.producto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ComercialId)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var venta in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => venta.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => venta.Units)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => venta.productoId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => venta.producto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => venta.ComercialId)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Prueba_LogIn_IdentityAuto.props" />
+</Project>

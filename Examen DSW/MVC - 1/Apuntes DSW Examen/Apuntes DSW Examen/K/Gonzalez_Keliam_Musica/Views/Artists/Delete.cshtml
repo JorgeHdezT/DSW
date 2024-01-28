@@ -1,0 +1,27 @@
+﻿@model Gonzalez_Keliam_Musica.Models.Artist
+
+@{
+    ViewData["Title"] = "Borrar Artista";
+}
+
+<h1>Eliminar Artista</h1>
+
+<h3>¿Estas seguro que deseas eliminar un artista?, Esto conlleva a borrar todos los albums de este artista.</h3>
+<div>
+    <h4>Artista</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ArtistId" />
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver a la lista.</a>
+    </form>
+</div>

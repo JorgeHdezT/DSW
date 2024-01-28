@@ -1,0 +1,36 @@
+﻿@model Gonzalez_Keliam_Musica.Models.Album
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles.</h1>
+
+<div>
+    <h4>Album</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Artist)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Artist.Name)
+        </dd>
+    </dl>
+    <h2>Listado de canciones del Album:</h2>
+    <ul>
+        @foreach (var item in Model.Tracks)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AlbumId">Editar</a> |
+    <a asp-action="Index">Volver a la lista</a>
+</div>

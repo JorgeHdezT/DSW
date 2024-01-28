@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace PO01_HernandezJorge_v1.Models
+{
+    public partial class Oficina
+    {
+        public Oficina()
+        {
+            Empleados = new HashSet<Empleado>();
+        }
+
+        public string CodigoOficina { get; set; } = null!;
+        public string Ciudad { get; set; } = null!;
+        public string Pais { get; set; } = null!;
+        public string? Region { get; set; }
+        public string CodigoPostal { get; set; } = null!;
+        public string Telefono { get; set; } = null!;
+        public string LineaDireccion1 { get; set; } = null!;
+        public string? LineaDireccion2 { get; set; }
+
+        public virtual ICollection<Empleado> Empleados { get; set; }
+    }
+}
